@@ -20,7 +20,7 @@ namespace Hatra.DataLayer.Mappings
                 build.HasOne(p => p.ParentMenu)
                     .WithMany(q => q.SubMenus)
                     .HasForeignKey(p => p.ParentId);
-                    //.OnDelete(DeleteBehavior.SetNull);
+                //.OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Category>(build =>
@@ -83,6 +83,25 @@ namespace Hatra.DataLayer.Mappings
                 build.Property(p => p.Email).HasMaxLength(450).IsRequired();
                 build.Property(p => p.Subject).HasMaxLength(100).IsRequired();
                 build.Property(p => p.Description).IsRequired();
+            });
+
+            modelBuilder.Entity<HardwareLock>(build =>
+          {
+              build.Property(p => p.ComputerName).HasMaxLength(300).IsRequired();
+              build.Property(p => p.CpuSerialNumber).HasMaxLength(300);
+              build.Property(p => p.LockSerialNumber).HasMaxLength(20).IsRequired();
+              build.Property(p => p.OwnerName).HasMaxLength(500);
+          });
+
+            modelBuilder.Entity<HardwareLockFinancialYear>(build =>
+            {
+                build.HasIndex(e => e.HardwareLockId);
+                build.Property(p => p.CompanyName).HasMaxLength(100).IsRequired();
+                build.Property(p => p.FinancialYearName).HasMaxLength(50).IsRequired();
+
+                build.HasOne(p => p.HardwareLock)
+                    .WithMany(p => p.FinancialYears)
+                    .HasForeignKey(p => p.HardwareLockId);
             });
 
             modelBuilder.Entity<UsefulLink>(build =>

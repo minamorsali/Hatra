@@ -182,6 +182,8 @@ namespace Hatra.DataLayer.Context
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { set; get; }
         public virtual DbSet<Folder> Folders { set; get; }
+        public virtual DbSet<HardwareLock> HardwareLocks { set; get; }
+        public virtual DbSet<HardwareLockFinancialYear> HardwareLockFinancialYears { set; get; }
         public virtual DbSet<Menu> Menus { set; get; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageImage> PageImages { get; set; }

@@ -4,14 +4,16 @@ using Hatra.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hatra.DataLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200504052909_AddHardwareLock")]
+    partial class AddHardwareLock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,12 +201,9 @@ namespace Hatra.DataLayer.Migrations
 
                     b.Property<int>("CompanyCount");
 
-                    b.Property<string>("ComputerName")
-                        .IsRequired()
-                        .HasMaxLength(300);
+                    b.Property<string>("ComputerName");
 
-                    b.Property<string>("CpuSerialNumber")
-                        .HasMaxLength(300);
+                    b.Property<string>("CpuSerialNumber");
 
                     b.Property<string>("CreatedByBrowserName")
                         .HasMaxLength(1000);
@@ -216,19 +215,11 @@ namespace Hatra.DataLayer.Migrations
 
                     b.Property<DateTimeOffset?>("CreatedDateTime");
 
-                    b.Property<string>("CurrentVersion");
-
                     b.Property<int>("DocumentCount");
-
-                    b.Property<DateTime?>("ExpireDate");
 
                     b.Property<int>("FinancialYearCount");
 
-                    b.Property<bool>("IsBlocked");
-
-                    b.Property<string>("LockSerialNumber")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("LockSerialNumber");
 
                     b.Property<string>("ModifiedByBrowserName")
                         .HasMaxLength(1000);
@@ -239,9 +230,6 @@ namespace Hatra.DataLayer.Migrations
                     b.Property<int?>("ModifiedByUserId");
 
                     b.Property<DateTimeOffset?>("ModifiedDateTime");
-
-                    b.Property<string>("OwnerName")
-                        .HasMaxLength(500);
 
                     b.Property<int>("UserCount");
 
@@ -258,9 +246,7 @@ namespace Hatra.DataLayer.Migrations
 
                     b.Property<Guid>("CompanyId");
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<string>("CompanyName");
 
                     b.Property<string>("CreatedByBrowserName")
                         .HasMaxLength(1000);
@@ -274,9 +260,7 @@ namespace Hatra.DataLayer.Migrations
 
                     b.Property<Guid>("FinancialYearId");
 
-                    b.Property<string>("FinancialYearName")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<string>("FinancialYearName");
 
                     b.Property<int>("HardwareLockId");
 
